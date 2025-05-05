@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Saver</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script>
+        tailwind.config={
+            theme:{
+                extend:{
+                    colors:{
+                        primary:'#2196F3',
+                        secondary:'#E3F2FD'
+                    },
+                    borderRadius:{
+                        'none':'0px',
+                        'sm':'4px',
+                        DEFAULT:'8px',
+                        'md':'12px',
+                        'lg':'16px',
+                        'xl':'20px',
+                        '2xl':'24px',
+                        '3xl':'32px',
+                        'full':'9999px',
+                        'button':'8px'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f8fafc;
+        }
+        input:focus {
+            outline: none;
+            border-color: #2196F3;
+            box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="w-[400px] bg-secondary p-6 rounded shadow-md">
+        <div class="mb-4 text-center">
+            <h1 class="text-xl font-semibold text-gray-800 mb-1">Telegram Saver</h1>
+            <p class="text-sm text-gray-600">Save links and notes to your Telegram Saved Messages</p>
+        </div>
+        
+        <div class="flex flex-col gap-y-1 mb-4">
+            <p id="apiKeyStatus" class="p-1 bg-white border rounded-md border-3 border-blue-300 text-center text-gray-500 text-md">Not connected!</p>
+            <div class="gap-x-2 flex flex-row items-center">
+                <button onClick="handleFileUpload()" id="chooseFileButton" class="w-1/2 p-3 border rounded-md border-3 border-gray-200 hover:border-blue-300 transition-colors duration-300 text-center text-gray-700 text-sm">
+                <input id="fileUploadInput" type="file" accept=".txt" hidden/>
+                <p id="fileNameDisplay" class="truncate">Credentials (click here!) [.txt]</p>
+                </button>
+                <button id="checkConnectionButton" class="w-1/2 p-3 border rounded-md font-medium bg-blue-400 hover:bg-blue-300 transition-colors duration-300 text-white">Connect</button>
+            </div>
+        </div>
+        
+        <div class="flex flex-col gap-y-1">
+            <div class="relative">
+                <textarea 
+                    type="text" 
+                    id="messageInput" 
+                    placeholder="Enter link or text to save" 
+                    class="w-full rounded-md bg-white border border-gray-200 rounded p-3 text-gray-700 text-sm"
+                ></textarea>
+            </div>
+            <button 
+                id="saveButton" 
+                class="w-full rounded-md bg-primary text-white py-3 font-medium bg-blue-400 hover:bg-blue-300 transition-colors duration-300 flex items-center justify-center"
+            >
+                <div class="w-6 bg-red">
+                    <i class="ri-telegram-line"></i>
+                </div>
+                Save to Telegram
+            </button>
+        </div>
+    </div>
+
+    <script src="../content-scripts/content.js"></script>
+</body>
+</html>
