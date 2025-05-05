@@ -1,0 +1,35 @@
+{
+    "name": "Telegram Sender",
+    "version": "0.0.0.1",
+    "content_security_policy": {
+        "extension_pages": "script-src 'self' https://cdn.jsdelivr.net; style-src 'self';"
+    },
+    "permissions": [
+        "activeTab"
+    ],
+    "manifest_version": 3,
+    "description": "An extension to send messages / links to your selected telegram chat. (Indended usage: quickly send your links / texts to 'Saved Messgaes' as a bookmark.",
+    "icons": {
+        "16": "icons/telegram_circle_16x16.png",
+        "32": "icons/telegram_circle_32x32.png",
+        "48": "icons/telegram_circle_48x48.png",
+        "128": "icons/telegram_circle_128x128.png"
+    },
+    "action": {
+        "default_popup": "popup/popup.html"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+              "<all_urls>"
+            ],
+            "js": ["content-scripts/content.js"]
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": ["images/*.jpeg"],
+            "matches": ["<all_urls>"]
+        }
+    ]
+}
