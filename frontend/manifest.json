@@ -16,7 +16,7 @@
         "128": "icons/telegram_circle_128x128.png"
     },
     "action": {
-        "default_popup": "popup/popup.html"
+        "default_popup": "index.html"
     },
     "content_scripts": [
         {
